@@ -49,11 +49,14 @@ Use this account to access protected pages:
 ### How to Test
 1. Open `index.html`
 2. Click **Login / Sign Up**
-3. Login using the demo credentials above
+3. Login using the demo account detail above
 4. After login, you can access:
    - **Team Hub (dashboard.html)**
    - **Match History (dataview1.html)**
    - **Book Friendly (booking.html)**
+5. All above cannot be accessed if you not sign in yet.
+- Instagram does not allow websites to auto-send DMs; therefore the project uses a **clipboard + open profile** method for Instagram messaging.
+- **Book Friendly:** WhatsApp supports pre-filled messages via URL, so the user can tap **Send**.
 
 ### Invalid Login Test (Error Feedback)
 - Try entering any other username/password
@@ -70,10 +73,3 @@ Use this account to access protected pages:
 - **Google Fonts (Poppins)** — typography  
 - **Chart.js** — meaningful chart visualisation (wins/draws/losses)  
 - **Vanilla JavaScript** — authentication simulation, routing protection, filtering, WhatsApp link generation, clipboard helper  
-
----
-
-## Notes (Important)
-- This is a **front-end simulation** (no backend, no database).
-- Instagram does not allow websites to auto-send DMs; therefore the project uses a **clipboard + open profile** method for Instagram messaging.
-- WhatsApp supports pre-filled messages via URL, so the user can tap **Send**.
