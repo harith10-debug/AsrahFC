@@ -1,0 +1,118 @@
+:root{
+  --green:#22c55e;
+  --dark:#0b1220;
+  --glass: rgba(12, 18, 32, 0.62);
+  --text:#0f172a;
+  --bg-img: url("assets/img/C5634E45-275F-462B-A99D-999310307CDC.JPG");
+}
+
+body{ font-family:'Poppins',sans-serif; }
+
+/*navigatiob bar*/
+.navbar-glass{
+  background: var(--glass) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(4, 105, 236, 0.08);
+}
+
+/* team logo (navbar) */
+.brand-logo{
+  width: 34px;
+  height: 34px;
+  object-fit: fill;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  padding: 0px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+
+/* background */
+.site-bg{ background:#f6f7fb; }
+
+/* home background */
+.hero{
+  position: relative;
+  min-height: 72vh;
+  background: var(--bg-img) center/cover no-repeat;
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.35));
+}
+.card-glass{
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 18px;
+}
+
+.sub-hero{
+  background: linear-gradient(135deg, var(--dark), #122141);
+}
+
+/* season snapshot stats */
+.stat-tile{
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  padding: 14px;
+  color: #fff;
+}
+.stat-num{ font-size: 28px; font-weight: 700; line-height: 1; }
+.stat-label{ font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 6px; }
+
+.feature-card{
+  background:#fff;
+  border-radius:16px;
+  border:1px solid rgba(15,23,42,0.08);
+  padding:18px;
+  box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+}
+.feature-card:hover{
+  transform: translateY(-2px);
+  transition: 180ms ease;
+}
+
+.content-card{
+  background:#fff;
+  border-radius:18px;
+  border:1px solid rgba(15,23,42,0.08);
+  padding:22px;
+  box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+}
+
+.mini-card{
+  background:#f8fafc;
+  border:1px solid rgba(15,23,42,0.08);
+  border-radius:14px;
+  padding:14px;
+}
+.mini-title{ font-size:12px; color:#64748b; }
+.mini-value{ font-weight:700; color: var(--text); }
+
+.footer{
+  background: var(--dark);
+  color:#fff;
+  padding: 16px 0;
+}
+
+/* login/signup background */
+.login-bg{
+  background: var(--bg-img) center/cover no-repeat;
+  position: relative;
+  min-height: 100vh;
+}
+.overlay{
+  position:absolute; inset:0;
+  background: rgba(0,0,0,0.60);
+  z-index:1;
+}
+.auth-card{
+  z-index:2;
+  width: 420px;
+  border-radius: 18px;
+}
+
+@media (max-width:576px){
+  .auth-card{ width:100%; }
+}

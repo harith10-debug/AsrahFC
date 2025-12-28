@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Team Hub</title>
+  <script>
+    (function () {
+      const logged = localStorage.getItem("asrahfc_logged_in") === "true";
+      if (!logged) {
+        window.location.replace("auth.html?next=dashboard.html&page=Team%20Hub");
+      }
+    })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="site-bg">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top navbar-glass">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/LOGO ASRAH.jpg" alt="Asrah FC Logo" class="brand-logo">
+        <span>Asrah FC</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navDash">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navDash">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="dashboard.html">Team Hub</a></li>
+          <li class="nav-item"><a class="nav-link" href="dataview1.html">Match History</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Book Friendly</a></li>
+          <li class="nav-item"><button class="btn btn-outline-light btn-sm ms-lg-2" id="logoutBtnTop">Logout</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <header class="sub-hero">
+    <div class="container py-5">
+      <h1 class="fw-bold text-white mb-2">Team Hub</h1>
+      <p class="text-white-50 mb-0">Here is our Team Profile and overall Game Analytics </p>
+    </div>
+  </header>
+  <section class="container py-5">
+    <div class="row g-4">
+      <!-- PROFILE -->
+      <div class="col-lg-6">
+        <div class="content-card">
+          <h4 class="fw-bold mb-3">Team Profile</h4>
+          <p class="text-muted">
+            Asrah FC is football team created by INTESABER batch 1721 that show teamwork, discipline, and respect.
+            We are open for friendly matches for who dares to challenge us.
+          </p>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="mini-card">
+                <div class="mini-title">Home Ground</div>
+                <div class="mini-value">Footballhub Eco Grandeur</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mini-card">
+                <div class="mini-title">Playing Style</div>
+                <div class="mini-value">High Press, Defensive</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mini-card">
+                <div class="mini-title">Team Formation</div>
+                <div class="mini-value">4-3-3</div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
+          <h5 class="fw-bold mb-3">Squad List</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between"><span>GK</span><span class="text-muted">Iky</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>CB</span><span class="text-muted">Ipong</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>LB</span><span class="text-muted">Icap</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>RB</span><span class="text-muted">Adli</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>DM</span><span class="text-muted">Pojey</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>RW</span><span class="text-muted">Hazim</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>LW</span><span class="text-muted">Dona</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>ST</span><span class="text-muted">Akmal</span></li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="content-card mb-4">
+          <h5 class="fw-bold mb-3">Analytics Summary</h5>
+          <ul class="mb-0">
+            <li><strong>Total Matches Played:</strong> 5</li>
+            <li><strong>Wins:</strong> 2</li>
+            <li><strong>Draws:</strong> 1</li>
+            <li><strong>Losses:</strong> 2</li>
+            <li><strong>Goals Scored:</strong> 8</li>
+            <li><strong>Goals Conceded:</strong> 9</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h4 class="fw-bold mb-3">Game Analytics Chart</h4>
+          <canvas id="seasonChart" height="220"></canvas>
+          <div class="text-muted small mt-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© 2025 Asrah FC</span>
+    </div>
+  </footer>
+
+  <script>
+    // Logout
+    document.getElementById("logoutBtnTop").addEventListener("click", () => {
+      localStorage.setItem("asrahfc_logged_in", "false");
+      window.location.href = "index.html";
+    });
+
+    // Chart
+    const ctx = document.getElementById("seasonChart").getContext("2d");
+    new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["Wins", "Draws", "Losses"],
+        datasets: [{ data: [2, 1, 2], borderWidth: 1 }]
+      },
+      options: { plugins: { legend: { position: "bottom" } } }
+    });
+  </script>
+
+  <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
